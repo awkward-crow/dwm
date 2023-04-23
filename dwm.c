@@ -16,7 +16,8 @@
  * on each monitor. Each client contains a bit array to indicate the tags of a
  * client.
  *
- * Keys and tagging rules are organized as arrays and defined in config.h.
+ * Appearance is defined in appearance.h
+ * Keys and tagging rules are organized as arrays and defined in behaviour.h.
  *
  * To understand everything else, start reading main().
  */
@@ -273,7 +274,8 @@ static Monitor *mons = NULL, *selmon = NULL;
 static Window root;
 
 /* configuration, allows nested code to access above variables */
-#include "config.h"
+#include "appearance.h"
+#include "behaviour.h"
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
@@ -2025,7 +2027,7 @@ main(int argc, char *argv[]) {
     if(!(logfile = fopen(logfilename, "w")))
         die("dwm: cannot open file %s\n", logfilename);
 
-    app_log("up and running ...\n");
+    app_log("a/dwm: up and running ...\n");
 
 	if(argc == 2 && !strcmp("-v", argv[1]))
 		die("dwm-"VERSION", © 2006-2009 dwm engineers, see LICENSE for details\n");

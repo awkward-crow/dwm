@@ -18,11 +18,15 @@ options:
 	@echo CC $<
 	@${CC} -c ${CFLAGS} $<
 
-${OBJ}: config.h config.mk
+${OBJ}: appearance.h behaviour.h config.mk
 
-config.h:
-	@echo creating $@ from config.def.h
-	@cp config.def.h $@
+appearance.h:
+	@echo creating $@ from appearance.def.h
+	@cp appearance.def.h $@
+
+behaviour.h:
+	@echo creating $@ from behaviour.dvorak.h
+	@cp behaviour.dvorak.h $@
 
 dwm: ${OBJ}
 	@echo CC -o $@
@@ -35,7 +39,7 @@ clean:
 dist: clean
 	@echo creating dist tarball
 	@mkdir -p dwm-${VERSION}
-	@cp -R LICENSE Makefile README config.def.h config.mk \
+	@cp -R LICENSE Makefile README appearance.def.h behaviour.dvorak.h config.mk \
 		dwm.1 ${SRC} dwm-${VERSION}
 	@tar -cf dwm-${VERSION}.tar dwm-${VERSION}
 	@gzip dwm-${VERSION}.tar
