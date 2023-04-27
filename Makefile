@@ -21,8 +21,8 @@ options:
 ${OBJ}: appearance.h behaviour.h config.mk
 
 appearance.h:
-	@echo creating $@ from appearance.def.h
-	@cp appearance.def.h $@
+	@echo creating $@ from appearance.dark.h
+	@cp appearance.dark.h $@
 
 behaviour.h:
 	@echo creating $@ from behaviour.dvorak.h
